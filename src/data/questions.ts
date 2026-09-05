@@ -1,0 +1,94 @@
+export type Track = "python" | "oop" | "dbms" | "rapid";
+
+export type Card = {
+  id: number;
+  track: Track;
+  q: string;
+  a: string;
+  code?: string;
+};
+
+export const TRACKS: { id: Track; name: string; blurb: string; tone: string }[] = [
+  { id: "python", name: "Python Core", blurb: "GIL, generators, decorators", tone: "bg-primary-soft" },
+  { id: "oop", name: "OOP", blurb: "pillars, MRO, dunder methods", tone: "bg-mint/30" },
+  { id: "dbms", name: "DBMS & SQL", blurb: "joins, indexes, normalization", tone: "bg-sky/30" },
+  { id: "rapid", name: "Rapid Round", blurb: "quick-fire fundamentals", tone: "bg-sun/30" },
+];
+
+export const CARDS: Card[] = [
+  { id: 1, track: "python", q: "What is the difference between a list and a tuple?", a: "Lists are mutable, tuples are immutable. Tuples are slightly faster and hashable (usable as dict keys or set elements) if they contain only immutable items; lists cannot be." },
+  { id: 2, track: "python", q: "What is the difference between is and ==?", a: "== checks value equality; is checks identity (same object in memory). Two lists with equal contents are == but not is." },
+  { id: 3, track: "python", q: "What are mutable and immutable data types in Python?", a: "Mutable: list, dict, set. Immutable: int, float, str, tuple, frozenset, bool. Immutable objects can't be changed in place — any \"modification\" creates a new object." },
+  { id: 4, track: "python", q: "What is the GIL (Global Interpreter Lock)?", a: "A mutex in CPython that allows only one thread to execute Python bytecode at a time, even on multi-core machines. Threading doesn't help CPU-bound tasks (use multiprocessing), but it's fine for I/O-bound work." },
+  { id: 5, track: "python", q: "Difference between deep copy and shallow copy?", a: "copy.copy() (shallow) copies the outer object but nested objects still reference the same memory. copy.deepcopy() recursively copies everything, so nested structures are fully independent." },
+  { id: 6, track: "python", q: "What are Python decorators?", a: "Functions that wrap another function to extend its behavior without modifying its code, using the @decorator_name syntax. Common uses: logging, timing, access control, memoization." },
+  { id: 7, track: "python", q: "What are generators, and why use them?", a: "Functions using yield that produce values lazily, one at a time, instead of building a full list in memory. Great for large datasets and streams since they're memory-efficient." },
+  { id: 8, track: "python", q: "Difference between *args and **kwargs?", a: "*args collects extra positional arguments into a tuple; **kwargs collects extra keyword arguments into a dict." },
+  { id: 9, track: "python", q: "What is list comprehension? Give an example.", a: "A concise way to build lists — more readable and often faster than an equivalent for-loop with .append().", code: "squares = [x**2 for x in range(10) if x % 2 == 0]" },
+  { id: 10, track: "python", q: "Difference between append() and extend() on a list?", a: "append() adds a single element (even if it's a list, it's added as one nested item). extend() adds each element of an iterable individually." },
+  { id: 11, track: "python", q: "How does Python manage memory?", a: "Uses automatic reference counting plus a cyclic garbage collector (the gc module) to clean up objects with circular references that reference counting alone can't catch." },
+  { id: 12, track: "python", q: "What are Python's built-in data structures for key-value storage?", a: "dict is the main one — hash table based, average O(1) lookup/insert. Since Python 3.7, dicts also preserve insertion order." },
+  { id: 13, track: "python", q: "What is the difference between range() and a list?", a: "range() returns a lazy, memory-efficient immutable sequence object; it doesn't store all values in memory like a list does." },
+  { id: 14, track: "python", q: "Explain exception handling — try/except/else/finally.", a: "try — code that might raise an error. except — handles specific error types. else — runs only if no exception occurred. finally — always runs (cleanup code, e.g. closing files)." },
+  { id: 15, track: "python", q: "What is a lambda function?", a: "An anonymous, single-expression function: square = lambda x: x*x. Commonly used with map(), filter(), and sorted(key=...)." },
+  { id: 16, track: "python", q: "What's the difference between __str__ and __repr__?", a: "__str__ gives a readable, user-facing string. __repr__ gives an unambiguous, developer-facing string (ideally one that could recreate the object). If __str__ is missing, Python falls back to __repr__." },
+  { id: 17, track: "python", q: "What are Python virtual environments and why use them?", a: "Isolated environments (venv, virtualenv) that keep project dependencies separate, avoiding version conflicts between different projects on the same machine." },
+  { id: 18, track: "python", q: "What is PEP 8?", a: "Python's official style guide covering naming conventions, indentation, line length, and more, for writing clean, consistent code." },
+
+  { id: 19, track: "oop", q: "What are the four pillars of OOP?", a: "Encapsulation, Abstraction, Inheritance, Polymorphism. (Very commonly asked — be ready with a Python example for each.)" },
+  { id: 20, track: "oop", q: "Does Python support true encapsulation?", a: "Not strictly — it uses naming conventions: _var (protected by convention) and __var (name-mangled to _ClassName__var). There's no compiler-enforced access control." },
+  { id: 21, track: "oop", q: "Difference between instance method, classmethod, and staticmethod?", a: "An instance method takes self, a classmethod receives the class via cls, and a staticmethod takes neither.", code: "class Demo:\n    def instance_method(self): ...      # needs self\n    @classmethod\n    def class_method(cls): ...          # receives class\n    @staticmethod\n    def static_method(): ...            # no self/cls" },
+  { id: 22, track: "oop", q: "Does Python support method overloading?", a: "Not natively — the last-defined method with a given name wins. Achieved via default args, *args, or functools.singledispatch." },
+  { id: 23, track: "oop", q: "What is method overriding? Give an example.", a: "A subclass provides its own version of a method already defined in its parent class.", code: "class Animal:\n    def speak(self): return \"...\"\n\nclass Dog(Animal):\n    def speak(self): return \"Woof\"" },
+  { id: 24, track: "oop", q: "What is Multiple Inheritance and MRO?", a: "A class inheriting from multiple parents. Python resolves ambiguity using C3 Linearization — check the order via ClassName.__mro__." },
+  { id: 25, track: "oop", q: "What are dunder/magic methods? Give 3 examples.", a: "__init__ (constructor), __str__ (string repr), __len__ (used by len()), __eq__ (== comparison), __add__ (+ operator)." },
+  { id: 26, track: "oop", q: "Difference between __init__ and __new__?", a: "__new__ creates the object (allocates memory) and is called before __init__, which initializes attributes on the already-created object." },
+  { id: 27, track: "oop", q: "Composition vs Inheritance — when to prefer which?", a: "Inheritance = \"is-a\". Composition = \"has-a\" (embedding another object as an attribute). Favor composition for flexibility and to avoid fragile deep hierarchies." },
+  { id: 28, track: "oop", q: "What is an abstract class in Python?", a: "A class that can't be instantiated directly, defined using the abc module with @abstractmethod. It forces subclasses to implement specific methods." },
+  { id: 29, track: "oop", q: "What is polymorphism? Give a real example.", a: "The ability to use a common interface for different underlying forms. E.g. len() works on strings, lists, and dicts differently but with one interface. Also: overriding speak() differently in Dog and Cat subclasses of Animal." },
+  { id: 30, track: "oop", q: "What is duck typing?", a: "\"If it walks like a duck and quacks like a duck, it's a duck.\" Python doesn't check an object's type, only whether it has the needed method/attribute — enabling flexible polymorphism without inheritance." },
+  { id: 31, track: "oop", q: "What is a constructor in Python? Can a class have multiple constructors?", a: "__init__ acts as the constructor. Python doesn't support multiple constructors natively (no overloading), but you can use classmethods as alternate constructors (e.g. from_string())." },
+  { id: 32, track: "oop", q: "Difference between class variables and instance variables?", a: "Class variables are shared across all instances (defined directly in the class body). Instance variables are unique per object (usually set via self.var = value in __init__)." },
+  { id: 33, track: "oop", q: "What is operator overloading? Example?", a: "Redefining how operators behave for custom objects using dunder methods, e.g. __add__ to make obj1 + obj2 work meaningfully for a custom Vector class." },
+  { id: 34, track: "oop", q: "What is the Diamond Problem, and how does Python solve it?", a: "It occurs in multiple inheritance when two parent classes share a common ancestor, causing ambiguity in which method to call. Python resolves it deterministically using MRO (C3 linearization)." },
+  { id: 35, track: "oop", q: "What is a Singleton pattern, and how do you implement it in Python?", a: "A design pattern ensuring only one instance of a class exists. Implemented by overriding __new__ to return the same instance every time, or using a module-level variable (Python modules are natively singleton-like)." },
+  { id: 36, track: "oop", q: "Interface vs abstract class (conceptually, since Python has no formal interface)?", a: "An abstract class can have some implemented methods plus some abstract ones. An interface only declares method signatures with no implementation. Python approximates interfaces via all-abstract base classes, or via typing.Protocol." },
+  { id: 37, track: "oop", q: "What is encapsulation used for practically?", a: "Protecting internal object state from unintended external modification, and controlling access via getters/setters or @property decorators." },
+  { id: 38, track: "oop", q: "What is the @property decorator used for?", a: "It lets you define a method that's accessed like an attribute (no parentheses), commonly used to add validation logic to attribute access while keeping a clean interface." },
+
+  { id: 39, track: "dbms", q: "What is normalization? Explain 1NF, 2NF, 3NF.", a: "1NF: atomic column values, no repeating groups. 2NF: 1NF + no partial dependency on a composite key. 3NF: 2NF + no transitive dependency between non-key columns. (Very commonly asked.)" },
+  { id: 40, track: "dbms", q: "What is denormalization, and when would you use it?", a: "Intentionally introducing redundancy to improve read performance, at the cost of extra storage and update complexity — common in reporting/analytics systems where reads vastly outnumber writes." },
+  { id: 41, track: "dbms", q: "Primary Key vs Unique Key vs Foreign Key?", a: "Primary Key: unique + not null, one per table. Unique Key: unique but allows one NULL, multiple allowed per table. Foreign Key: references another table's primary key, enforcing referential integrity." },
+  { id: 42, track: "dbms", q: "What is ACID?", a: "Atomicity, Consistency, Isolation, Durability — properties guaranteeing reliable transaction processing." },
+  { id: 43, track: "dbms", q: "DELETE vs TRUNCATE vs DROP?", a: "DELETE: removes rows (WHERE optional), logged, rollback possible. TRUNCATE: removes all rows fast, minimal logging, resets auto-increment. DROP: removes the entire table structure." },
+  { id: 44, track: "dbms", q: "Explain all types of SQL JOINs.", a: "INNER (matches only), LEFT (all left + matches), RIGHT (all right + matches), FULL OUTER (all rows both sides), SELF JOIN (table joined with itself), CROSS JOIN (Cartesian product)." },
+  { id: 45, track: "dbms", q: "What is an index? Downsides of too many indexes?", a: "A B-Tree-based structure speeding up reads by avoiding full table scans. Downside: every write (INSERT/UPDATE/DELETE) must update all indexes too, slowing writes and using more storage." },
+  { id: 46, track: "dbms", q: "WHERE vs HAVING?", a: "WHERE filters rows before grouping; HAVING filters groups after GROUP BY + aggregation." },
+  { id: 47, track: "dbms", q: "Subquery vs JOIN — which is better?", a: "JOINs are typically more efficient for combining large datasets since the query optimizer handles them better; subqueries are useful for a single filtered value or per-row correlated checks." },
+  { id: 48, track: "dbms", q: "Clustered vs Non-Clustered Index?", a: "Clustered: determines physical row order, one per table. Non-Clustered: a separate structure pointing back to actual rows, multiple allowed." },
+  { id: 49, track: "dbms", q: "Write a query for the second highest salary.", a: "Use a nested MAX to exclude the top salary.", code: "SELECT MAX(salary) FROM Employee\nWHERE salary < (SELECT MAX(salary) FROM Employee);" },
+  { id: 50, track: "dbms", q: "What is a Deadlock? How is it avoided?", a: "Two or more transactions waiting on locks held by each other in a cycle. Avoided via consistent lock ordering, timeouts, short transactions, or DBMS deadlock detection." },
+  { id: 51, track: "dbms", q: "What is a View in SQL?", a: "A virtual table based on the result of a stored SQL query. It doesn't store data itself (usually), simplifies complex queries, and can restrict access to specific columns." },
+  { id: 52, track: "dbms", q: "What is a Stored Procedure?", a: "Precompiled SQL code stored in the database that can be executed repeatedly with parameters — improves performance (less parsing) and centralizes business logic." },
+  { id: 53, track: "dbms", q: "What are Aggregate functions? Name a few.", a: "COUNT(), SUM(), AVG(), MIN(), MAX() — they operate on a set of rows and return a single summary value." },
+  { id: 54, track: "dbms", q: "What is a Composite Key?", a: "A primary key made up of two or more columns that together uniquely identify a row (neither column alone is unique)." },
+  { id: 55, track: "dbms", q: "Difference between UNION and UNION ALL?", a: "UNION combines results and removes duplicates (slower, needs a sort/dedup step). UNION ALL keeps duplicates and is faster since no dedup happens." },
+  { id: 56, track: "dbms", q: "What is a Trigger in SQL?", a: "A block of code automatically executed in response to a specific event on a table (INSERT/UPDATE/DELETE), often used for auditing or enforcing business rules." },
+  { id: 57, track: "dbms", q: "What is the difference between OLTP and OLAP?", a: "OLTP: fast, small, frequent read/write operations (e.g. order processing). OLAP: complex queries over large historical data for analysis/reporting." },
+  { id: 58, track: "dbms", q: "What is Sharding?", a: "Splitting a large database horizontally across multiple servers (shards) based on a key, to improve scalability and performance for very large datasets." },
+  { id: 59, track: "dbms", q: "What is Replication in databases?", a: "Copying data across multiple database servers to improve availability, fault tolerance, and read scalability (read replicas)." },
+  { id: 60, track: "dbms", q: "Foreign Key vs reference constraint, conceptually?", a: "A Foreign Key is the actual column-level constraint enforcing that a value must exist in the referenced table's primary/unique key — \"reference constraint\" is just another name for the same enforcement mechanism." },
+  { id: 61, track: "dbms", q: "What is Query Optimization, and how does an Execution Plan help?", a: "The process of choosing the most efficient way to execute a SQL query. An execution plan (via EXPLAIN) shows how the engine will fetch data (index scan vs full scan, join order) — used to spot bottlenecks." },
+  { id: 62, track: "dbms", q: "What is a NULL value, and how does it behave in comparisons?", a: "NULL represents unknown / absence of a value. Any comparison with NULL (e.g. = NULL) returns NULL, not true — you must use IS NULL / IS NOT NULL explicitly." },
+
+  { id: 63, track: "rapid", q: "Is Python interpreted or compiled?", a: "Both, technically — Python source is compiled to bytecode (.pyc), which the interpreter (CPython VM) then executes." },
+  { id: 64, track: "rapid", q: "What is PIP?", a: "Python's package manager, used to install and manage third-party libraries from PyPI." },
+  { id: 65, track: "rapid", q: "What does writing \"Pythonic\" code actually mean?", a: "Following Python idioms — list comprehensions, context managers (with), unpacking — instead of literally translating patterns from another language." },
+  { id: 66, track: "rapid", q: "What is a context manager (the with statement)?", a: "An object implementing __enter__ and __exit__, used to manage resources (like file handles) automatically — it ensures cleanup even if an exception occurs." },
+  { id: 67, track: "rapid", q: "What is the difference between a database and a schema?", a: "A database is the overall container for data; a schema is a logical grouping/namespace of tables, views, etc. within that database." },
+  { id: 68, track: "rapid", q: "What does \"referential integrity\" mean?", a: "It ensures foreign key values always correspond to an existing primary key value in the referenced table, preventing orphaned records." },
+  { id: 69, track: "rapid", q: "What is a candidate key vs primary key?", a: "A candidate key is any column (or set) that could uniquely identify a row. The primary key is the one candidate key chosen as the official identifier; the rest remain alternate keys." },
+  { id: 70, track: "rapid", q: "Why does a CRM/SaaS company care about both OOP and SQL for an SDE intern?", a: "Their product integrates with client CRM data (heavy DB work) and is built with object-oriented backend code (Java/Python/Spring Boot) — so both skills map directly to day-to-day work on their stack." },
+];
+
+export const countFor = (track: Track) => CARDS.filter((c) => c.track === track).length;
