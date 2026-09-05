@@ -28,6 +28,7 @@
   --color-mint: var(--mint);
   --color-sun: var(--sun);
   --color-sky: var(--sky);
+  --color-lilac: var(--lilac);
   --ease-deck: cubic-bezier(0.32, 0.72, 0, 1);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -88,6 +89,7 @@
   --mint: oklch(0.855 0.098 168);
   --sun: oklch(0.845 0.14 82);
   --sky: oklch(0.81 0.086 245);
+  --lilac: oklch(0.84 0.09 310);
   --secondary: oklch(0.955 0.014 65);
   --secondary-foreground: oklch(0.27 0.02 315);
   --muted: oklch(0.955 0.014 65);
