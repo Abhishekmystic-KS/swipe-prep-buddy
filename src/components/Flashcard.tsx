@@ -53,9 +53,10 @@ export function Flashcard({ card, index, total, trackLabel, onNext, onPrev }: Pr
   const rotate = offset / 22;
 
   return (
-    <div className="deck3d relative select-none">
-      <div className="absolute inset-x-3 top-3 h-full -rotate-3 rounded-[24px] bg-card/70 ring-1 ring-border" />
-      <div className="absolute inset-x-6 top-6 h-full rotate-2 rounded-[24px] bg-card/85 ring-1 ring-border" />
+    <div className="deck3d relative select-none pb-3">
+      <div className="absolute inset-x-3 inset-y-0 -rotate-3 rounded-[24px] bg-card/70 ring-1 ring-border" />
+      <div className="absolute inset-x-6 inset-y-0 translate-y-2 rotate-2 rounded-[24px] bg-card/85 ring-1 ring-border" />
+
 
       <div
         className="flip-shell relative touch-pan-y"
