@@ -1,5 +1,17 @@
 export type Track = "python" | "oop" | "dbms" | "java" | "rapid";
-...
+
+export type Card = {
+  id: number;
+  track: Track;
+  q: string;
+  a: string;
+  code?: string;
+};
+
+export const TRACKS: { id: Track; name: string; blurb: string; tone: string }[] = [
+  { id: "python", name: "Python Core", blurb: "GIL, generators, decorators", tone: "bg-primary-soft" },
+  { id: "oop", name: "OOP", blurb: "pillars, MRO, dunder methods", tone: "bg-mint/30" },
+  { id: "dbms", name: "DBMS & SQL", blurb: "joins, indexes, normalization", tone: "bg-sky/30" },
   { id: "java", name: "Java Core", blurb: "JVM, collections, streams", tone: "bg-lilac/30" },
   { id: "rapid", name: "Rapid Round", blurb: "quick-fire fundamentals", tone: "bg-sun/30" },
 ];
