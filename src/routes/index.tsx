@@ -10,12 +10,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Swipeable flashcards for SDE interview prep: 70 Python, OOP and DBMS/SQL questions with answers.",
+          "Swipeable flashcards for SDE interview prep: Python, OOP, DBMS/SQL, Java, API/systems and a personal self-interview deck, with answers.",
       },
       { property: "og:title", content: "Cardstack — SDE Interview Flashcards" },
       {
         property: "og:description",
-        content: "Tap to flip, swipe to move on. 70 core CS questions for your SDE round.",
+        content: "Tap to flip, swipe to move on. 140 core CS + self-interview questions for your SDE round.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -80,8 +80,8 @@ function Index() {
               Start flicking.
             </h1>
             <p className="rise-in mt-3 max-w-[36ch] text-[15px] leading-relaxed text-foreground/55 text-pretty [animation-delay:60ms]">
-              70 bite-size SDE questions across four tracks. Tap to flip, swipe to move on, and
-              finish the whole stack.
+              {CARDS.length} bite-size questions across {TRACKS.length} tracks. Tap to flip, swipe
+              to move on, and finish the whole stack.
             </p>
 
             <div className="mt-7 space-y-3">
